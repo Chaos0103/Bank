@@ -36,5 +36,6 @@ public class Account {
         this.client = client;
         this.balance = balance;
         this.type = type;
+        this.createdDate = LocalDateTime.now();
     }
 }

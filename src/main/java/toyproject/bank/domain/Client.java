@@ -21,8 +21,23 @@ public class Client {
     private String email;
     @Column(length = 11)
     private String phone;
-    @Column(length = 14)
+    @Column(updatable = false, length = 14)
     private String rrn;
     @Embedded
     private Address address;
+
+    public Client(String name, String email, String phone, String rrn, Address address) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.rrn = rrn;
+        this.address = address;
+    }
+
+    //==비즈니스 로직==//
+    public void update(String email, String phone, Address address) {
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
 }

@@ -23,8 +23,6 @@ public class AccountTransaction {
     private Account account;
 
     @Column(updatable = false)
-    private LocalDateTime transactionDate;
-    @Column(updatable = false)
     private int amount;
     @Column(updatable = false)
     private int balance;
@@ -33,4 +31,24 @@ public class AccountTransaction {
     private TransactionType type;
     @Column(updatable = false)
     private String content;
+    @Column(updatable = false)
+    private LocalDateTime transactionDate;
+
+    public AccountTransaction(Account account, int amount, TransactionType type, String content) {
+        this.account = account;
+        this.amount = amount;
+        this.type = type;
+        this.content = content;
+        this.transactionDate = LocalDateTime.now();
+        this.balance = getAccountBalance(account, amount);
+    }
+
+    //==편의 메서드==//
+    public int getAccountBalance(Account account, int amount) {
+        if (this.type == TransactionType.OUT) {
+            return account.removeBalance(amount);
+        } else {
+            return account.addBalance(amount);
+        }
+    }
 }

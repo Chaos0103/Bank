@@ -3,6 +3,7 @@ package toyproject.bank.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import toyproject.bank.exception.NotEnoughException;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -37,5 +38,20 @@ public class Account {
         this.balance = balance;
         this.type = type;
         this.createdDate = LocalDateTime.now();
+    }
+
+    //==비즈니스 로직==//
+    public int addBalance(int money) {
+        this.balance += money;
+        return this.balance;
+    }
+
+    public int removeBalance(int money) {
+        int result = this.balance - money;
+        if (result < 0) {
+            throw new NotEnoughException("잔고가 부족합니다.");
+        }
+        this.balance = result;
+        return this.balance;
     }
 }

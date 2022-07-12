@@ -10,5 +10,13 @@ public class CardTransactionDto {
     private int amount;
     private ApprovalStatus status;
     private int installment;
-    private String Content;
+    private String content;
+
+    public CardTransactionDto(Long id, int amount, ApprovalStatus status, int installment, String content) {
+        this.id = id;
+        this.amount = amount;
+        this.status = status;
+        this.installment = installment;
+        this.content = content;
+    }
 }

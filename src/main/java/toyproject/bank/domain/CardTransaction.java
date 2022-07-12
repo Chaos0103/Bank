@@ -23,14 +23,33 @@ public class CardTransaction {
     private Card card;
 
     @Column(updatable = false)
-    private LocalDateTime transactionDate;
-    @Column(updatable = false)
     private int amount;
-    @Enumerated(EnumType.STRING)
-    @Column(updatable = false)
-    private ApprovalStatus status;
     @Column(updatable = false)
     private int installment;
     @Column(updatable = false)
     private String content;
+
+    @Enumerated(EnumType.STRING)
+    private ApprovalStatus status;
+    @Column(updatable = false)
+    private LocalDateTime transactionDate;
+
+    public CardTransaction(Card card, int amount, int installment, String content) {
+        this.card = card;
+        this.amount = amount;
+        this.installment = installment;
+        this.content = content;
+
+        this.status = ApprovalStatus.WAIT;
+        this.transactionDate = LocalDateTime.now();
+    }
+
+    //==비즈니스 로직==//
+    public void cancel() {
+        this.status = ApprovalStatus.CANCEL;
+    }
+
+    public void approve() {
+        this.status = ApprovalStatus.APPROVAL;
+    }
 }

@@ -1,5 +1,5 @@
 package toyproject.bank.domain;
 
 public enum ApprovalStatus {
-    WAIT, APPROVAL
+    WAIT, APPROVAL, CANCEL
 }

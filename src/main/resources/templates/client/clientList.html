@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div>
+        <div>
+            <form th:object="${clientSearch}" class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{name}" class="form-control" placeholder="회원명"/>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+        </div>
+        <table class="table table-striped" style="text-align: center">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>고객명</th>
+                <th>이메일</th>
+                <th>연락처</th>
+                <th>주민등록번호</th>
+                <th>주소</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clientDtoList}">
+                <td th:text="${client.id}"></td>
+                <td th:text="${client.name}"></td>
+                <td th:text="${client.email}"></td>
+                <td th:text="${client.phone}"></td>
+                <td th:text="${client.rrn}"></td>
+                <td th:text="|(${client.zipcode}) ${client.mainAddress} ${client.detailAddress}|"></td>
+                <td>
+                    <a href="#" th:href="'javascript:update('+${client.id}+')'" class="btn btn-primary">수정</a>
+                </td>
+                <td>
+                    <a href="#" th:href="'javascript:remove('+${client.id}+')'" class="btn btn-danger">삭제</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+
+</body>
+<script>
+    function update(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "get");
+        form.setAttribute("action", "/client/" + id + "/update");
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function remove(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/client/" + id + "/remove");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+</html>

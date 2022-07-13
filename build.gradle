@@ -47,6 +47,9 @@ dependencies {
 	//테스트에서 lombok 사용
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	// html Recompile
+	implementation 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {

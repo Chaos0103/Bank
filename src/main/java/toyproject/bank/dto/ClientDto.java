@@ -1,6 +1,7 @@
 package toyproject.bank.dto;
 
 import lombok.Data;
+import toyproject.bank.domain.Client;
 
 @Data
 public class ClientDto {
@@ -24,4 +25,16 @@ public class ClientDto {
         this.mainAddress = mainAddress;
         this.detailAddress = detailAddress;
     }
+
+    public ClientDto(Client client) {
+        this.id = client.getId();
+        this.name = client.getName();
+        this.email = client.getEmail();
+        this.phone = client.getPhone();
+        this.rrn = client.getRrn();
+        this.zipcode = client.getAddress().getZipcode();
+        this.mainAddress = client.getAddress().getMainAddress();
+        this.detailAddress = client.getAddress().getDetailAddress();
+    }
+
 }

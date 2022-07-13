@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <form role="form" th:object="${clientForm}" method="post">
+        <div class="form-group">
+            <label th:for="name">이름</label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력하세요" readonly="true">
+        </div>
+        <div class="form-group">
+            <label th:for="email">이메일</label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="phone">핸드폰번호</label>
+            <input type="text" th:field="*{phone}" class="form-control" placeholder="핸드폰번호를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="rrn">주민등록번호</label>
+            <input type="text" th:field="*{rrn}" class="form-control" placeholder="주민등록번호를 입력하세요" readonly="true">
+        </div>
+        <div class="form-group">
+            <label th:for="zipcode">우편번호</label>
+            <input type="text" th:field="*{zipcode}" class="form-control" placeholder="우편번호를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="mainAddress">주소</label>
+            <input type="text" th:field="*{mainAddress}" class="form-control" placeholder="주소를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="detailAddress">상세주소</label>
+            <input type="text" th:field="*{detailAddress}" class="form-control" placeholder="상세주소를 입력하세요">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br/>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+
+</body>
+</html>

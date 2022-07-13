@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+    <div class="jumbotron">
+        <h1>BANK SERVICE</h1>
+        <p class="lead">고객 기능</p>
+        <p>
+            <a class="btn btn-lg btn-secondary" href="/client/new">고객 등록</a>
+            <a class="btn btn-lg btn-secondary" href="/clients">고객 목록</a>
+        </p>
+        <p class="lead">계좌 기능</p>
+        <p>
+            <a class="btn btn-lg btn-dark" href="/account/new">신규 개설</a>
+            <a class="btn btn-lg btn-dark" href="/account/input">계좌 입금</a>
+            <a class="btn btn-lg btn-dark" href="/account/output">계좌 출금</a>
+            <a class="btn btn-lg btn-dark" href="/account/trans">계좌 이체</a>
+            <a class="btn btn-lg btn-dark" href="/account">계좌 내역</a>
+        </p>
+        <p class="lead">카드 기능</p>
+        <p>
+            <a class="btn btn-lg btn-info" href="/card/new">신규 발급</a>
+            <a class="btn btn-lg btn-info" href="/card">카드 내역</a>
+        </p>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>

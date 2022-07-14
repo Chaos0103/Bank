@@ -12,6 +12,8 @@ import toyproject.bank.exception.PaymentException;
 import toyproject.bank.repository.CardRepository;
 import toyproject.bank.repository.CardTransactionRepository;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -50,6 +52,15 @@ public class CardTransactionService {
         CardTransaction cardTransaction = findCardTransaction(id);
         cardTransaction.approve();
         return cardTransaction.getId();
+    }
+
+    /**
+     * 조회
+     */
+    public List<CardTransactionDto> search(String cardNumber) {
+        return ctRepository.findByCardId(cardNumber).stream()
+                .map(CardTransactionDto::new)
+                .toList();
     }
 
     private CardTransaction findCardTransaction(Long id) {

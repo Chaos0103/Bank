@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <form role="form" action="/account/input" th:object="${transactionForm}" method="post">
+        <div class="form-group">
+            <label th:for="accountNumber">입금할 계좌번호</label>
+            <input type="text" th:field="*{accountNumber}" class="form-control" placeholder="계좌번호를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="amount">입금금액</label>
+            <input type="number" th:field="*{amount}" class="form-control" placeholder="입금금액을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="content">내용</label>
+            <input type="text" th:field="*{content}" class="form-control" placeholder="내용을 입력하세요">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br/>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+
+</body>
+</html>
